@@ -4,7 +4,6 @@ class CreateSubjects < ActiveRecord::Migration
       t.text :contextDisplay
       t.integer :totalTime
       t.integer :countQuestion
-
       t.timestamps
     end
   end

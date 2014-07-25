@@ -7,7 +7,6 @@ class CreateRegisters < ActiveRecord::Migration
       t.boolean :finish, default: false
       t.integer :user_id
       t.integer :subject_id
-
       t.timestamps
     end
     add_index :registers, [:user_id, :created_at]

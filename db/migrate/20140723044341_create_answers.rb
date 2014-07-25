@@ -4,7 +4,6 @@ class CreateAnswers < ActiveRecord::Migration
       t.text :answer
       t.boolean :isCorrect
       t.integer :question_id
-
       t.timestamps
     end
     add_index :answers, [:question_id, :created_at]
