@@ -1,0 +1,13 @@
+  <td><%= link_to subject.context_display, subject %></td>
+  <td><%= subject.total_time %></td>
+  <td><%= subject.count_question %></td>
+  <% if current_user.admin? && !current_user?(user) %>
+    <td>
+      <%= link_to "delete", subject, method: :delete,
+                                  data: { confirm: "You sure?" } %> |
+   
+       <%= link_to "Add", subject, method: :delete,
+                                  data: { confirm: "You sure?" } %> 
+    </td>
+  <% end %>
+

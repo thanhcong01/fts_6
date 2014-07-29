@@ -1,16 +1,12 @@
 @import "bootstrap";
-
 /* mixins, variables, etc. */
-
 $grayMediumLight: #eaeaea;
-
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 /* universal */
-
 html {
   overflow-y: scroll;
 }
@@ -60,7 +56,6 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-
 
 /* header */
 
@@ -144,7 +139,6 @@ aside {
   margin-right: 10px;
 }
 
-
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -181,6 +175,180 @@ input {
     border-top: 1px solid $grayLighter;
     &:last-child {
       border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
+/* Subjects */
+.subjectshow{
+  text-align:center;
+  margin: 0px;
+  table{
+    text-align:center;
+    margin:0px;
+    tr{
+      margin:0px;
+      td{
+        padding-right:20px;
+        width:auto;
+        font-size:18px;
+        h1{
+          font-size:18px;
+          font-weight:bold;
+        }
+      }
+    }
+  }
+}
+
+.row{
+  h1{
+    font-weight:bold;
+    font-size:32px;
+  }
+}
+
+.subjects {
+  width:576px;
+  margin: 0px;
+  border: 1px solid $grayLighter;
+  
+  /* table*/
+  tr{
+    display:block;
+    width:576px;
+    clean:both;
+    display:block;
+    border-bottom: 1px solid $grayLighter;
+    th{
+        font-weight:bold;
+        text-align:center;
+        padding:0px 20px 0px 20px;
+        width:150px;
+        overflow:hiden;
+    }
+    td{
+      padding:0px 20px 0px 20px;
+      display:inline;
+      float:left;
+      text-align:left;
+      border-right: 1px solid $grayLighter;
+      width:150px;
+      overflow:hiden;
+      a{
+        padding-right:15px;
+        &:last-child {
+          padding-left:15px;
+          padding-right:0px;
+        }
+      }
+      &:last-child {
+        border-right: 0px solid $grayLighter;
+        clean:right;
+      }
+    }
+
+    
+  }
+  &:last-child {
+      border-bottom: 0px solid $grayLighter;
+      clean:right;
+    }
+}
+/* examination */
+.examinations{
+  width:800px;
+  height:100px;
+  display:block;
+  margin:0px;
+  padding:5px 5px 5px 5px;
+  clean:both;
+  font-size:16px;
+  .span{
+    width:100%;
+    clean:both;
+    float:left;
+  }
+  .examninationDiv1{
+    border: 1px solid $grayLighter;;
+    width:250px;
+    height:90px;
+    overflow-y:scroll;
+    float:left;
+    display:inline-block;
+    ul{
+      list-style: none;
+      margin: 0;
+      li{
+        padding-left:10px;
+      }
+    }
+  }
+  .examninationDiv2{
+    width:230px;
+    height:30px;
+    margin:30px 10px 30px 10px;
+    float:left;
+    display:inline-block;
+  }
+  .examninationDiv3{
+    width:230px;
+    height:45px;
+    margin:25px 10px 20px 10px;
+    float:left;
+    display:inline-block;
+  }
+}
+.examinationSpan{
+  font-size:16px;
+  padding-left:5px;
+}
+.registed{
+  display: block;
+  clean: both;
+  width: 100%;
+  padding: 40px 5px 5px 5px;
+  ul{
+    list-style: none;
+    margin: 0px;
+    width: 100%;
+    li{
+      clean: both;
+      width: 100%;
+      height:22px;
+      border-top: 1px solid $grayLighter;
+      border-bottom: 1px solid $grayLighter;
+      padding: 20px 0px 15px 0px;
+      text-align:center;
+      span{
+        display: inline-block;
+        float:left;
+        width: 210px;
+        height: 20px;
+        overflow: hiden;
+        line-height: 18px;
+        text-align: left;
+        font-size: 18px;
+        padding-top:2px 10px 0px 10px;
+        h3{
+          font-size: 18px;
+          margin: 0px;
+          padding: 0px;
+          line-height: 18px;
+          text-align: left;
+          font-weight: both;
+          width: 190px;
+        }
+        h4{
+          font-size: 18px;
+          margin: 0px;
+          padding: 0px;
+          line-height: 16px;
+          text-align: center;
+          font-weight: normal;
+          width: 200px;
+        }
+      }
     }
   }
 }

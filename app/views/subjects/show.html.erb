@@ -1,0 +1,34 @@
+<% provide(:title,"Subject:"+ @subject.contextDisplay) %>
+<div class="row">
+<h1>Subject:  <%= @subject.contextDisplay %></h1>
+  <aside class="span4">
+    <section class="subjectshow">
+      <table>
+        <tr>
+          <td>
+            <h1>Subject name</h1>
+          </td>
+          <td>
+            <%= @subject.context_display %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h1>Total time</h1>
+          </td>
+          <td>
+            <%= @subject.total_time %></td>
+        </tr>
+        <tr>
+          <td>
+            <h1>Total question</h1>
+          </td>
+          <td>
+            <%= @subject.count_question %>
+          </td>
+        </tr>
+        
+      </table>
+    </section>
+  </aside>
+</div>

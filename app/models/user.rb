@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :not_validate_password
-  
   has_many :registers
+  has_many :subjects, through: :registers
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   validates :name,  presence: true, length: { maximum: 50 }

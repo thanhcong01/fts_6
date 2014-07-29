@@ -1,26 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-namespace :db do
-  desc "Fill database with sample data"
-  task populate: :environment do
-    admin = User.create!(name: "Example User",
-                         email: "example@railstutorial.org",
-                         password: "foobar",
-                         password_confirmation: "foobar",
-                         admin: true)
-    99.times do |n|
-      name  = Faker::Name.name
-      email = "exam3ple-#{n+1}@railstutorial.org"
-      password  = "password"
-      User.create!(name: name,
-                   email: email,
-                   password: password,
-                   password_confirmation: password)
-    end
-  end
+(1..50).each do |i|
+  User.create(name: "thanhcong#{i}", email: "thanhcong#{i}@example.com",
+  password: "ca27e20fca6a12ac35dfa65398618c6569b1d4c0", password_confirmation: "ca27e20fca6a12ac35dfa65398618c6569b1d4c0", admin: '0')
+end
+
+(1..5).each do |i|
+  User.create(name: "admin#{i}", email: "admin#{i}@example.com",
+  password: "ca27e20fca6a12ac35dfa65398618c6569b1d4c0", password_confirmation: "ca27e20fca6a12ac35dfa65398618c6569b1d4c0", admin: '1')
+end
+
+(1..5).each do |i|
+  Category.create(name_category: "Category#{i}")
+end
+
+(1..10).each do |i|
+  Subject.create(total_time: i+10, count_question: i+10, context_display: "subject#{i}")
 end

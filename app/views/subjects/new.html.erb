@@ -1,0 +1,20 @@
+<% provide(:title, 'Create subject') %>
+<h1>Subject</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@subject) do |f| %>
+      <%= render 'shared/error_subjects' %>
+      <%= f.label :context_display, "Subject name" %>
+      <%= f.text_field :context_display %>
+
+      <%= f.label :total_time, "Time" %>
+      <%= f.text_field :total_time %>
+
+      <%= f.label :count_question, "Count question" %>
+      <%= f.text_field :count_question %>
+
+      <%= f.submit "Create subject", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

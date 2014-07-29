@@ -26,6 +26,13 @@ module SessionsHelper
     user == current_user
   end
   
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Please sign in."
+    end
+  end
+  
   def sign_out
     user.not_validate_password = true
     current_user.update_attributes(remember_token: User.digest(User.new_remember_token))
