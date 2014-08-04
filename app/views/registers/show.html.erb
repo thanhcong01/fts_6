@@ -1,0 +1,35 @@
+<% provide(:title, "Show test") %>
+<h1>
+  <%= @register.subject.context_display %>
+</h1>
+<div class="register_edit">
+<% @answer_sheets.each do |answer_sheet| %>
+      <span><%= answer_sheet.question.context_question %></span>
+      <ul>
+          <% answer_sheet.answers.each do |answer|%>
+            <li>
+              <% if answer.id == answer_sheet.answer_id %>
+                <%= radio_button :answer_id, answer.id, checked: true, disabled: true %> 
+                <%= answer.answer %>
+                <span>Your answers</span>
+              <% else %>
+                <%= radio_button :answer_id, answer.id, false, disabled: true %> 
+                <%= answer.answer %>
+              <% end  %>
+            </li>
+          <% end %>
+          <li>
+              <% if answer_sheet.correct? %>
+              <h3>
+                correct: True
+              </h3>
+              <% else %>
+                <h4>
+                correct: false
+              </h4>
+              <% end %>
+          </li>
+      </ul>
+<% end %>
+  <%= link_to "Back", new_register_path, class: "btn btn-large btn-primary" %>
+</div>

@@ -13,5 +13,21 @@ end
 end
 
 (1..10).each do |i|
-  Subject.create(total_time: i+10, count_question: i+10, context_display: "subject#{i}")
+  Subject.create(total_time: i+10, count_question: i+5, context_display: "subject#{i}")
+end
+
+(1..240).each do |i|
+  Question.create(context_question: "Question#{i}", subject_id: i%9+1, is_controll_text: false)
+end
+
+(1..60).each do |i|
+  Question.create(context_question: "Questiontext#{i}", subject_id: i%9+1, is_controll_text: true)
+end
+
+(1..1200).each do |i|
+  Answer.create(answer: "answer#{i}", question_id: i%299+1, correct: false)
+end
+
+(1..300).each do |i|
+  Answer.create(answer: "answer#{i}", question_id: i%299+1, correct: true)
 end

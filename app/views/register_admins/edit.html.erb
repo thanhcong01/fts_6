@@ -1,0 +1,32 @@
+<% provide(:title, "Test") %> 
+<h1> 
+  <%= @register.subject.context_display %> 
+</h1> 
+<%= form_for @register do |f| %> 
+  <%= f.hidden_field :id %>
+<div class="register_edit"> 
+<% @answer_sheets.each do |answer_sheet| %> 
+      <span><%= answer_sheet.question.context_question %></span> 
+      <ul> 
+        <%= f.fields_for :answer_sheets,  answer_sheet do |ff| %>
+          <% answer_sheet.answers.each do |answer|%>
+            <li>
+              <% if answer.id == answer_sheet.answer_id %>
+                <%= ff.radio_button :answer_id, answer.id, checked: true %> 
+                <%= answer.answer %>
+                <span>checked</span>
+              <% else %>
+                <%= ff.radio_button :answer_id, answer.id, checked:false %> 
+                <%= answer.answer %>
+              <% end  %>
+            </li>
+          <% end %> 
+            <li>
+              <%= ff.check_box :correct %>
+            </li> 
+        <% end %> 
+      </ul> 
+    <% end %> 
+  <%= f.submit "Save changes", class: "btn btn-large btn-primary" %> 
+</div> 
+<% end %>

@@ -15,5 +15,4 @@ class CreateRegisters < ActiveRecord::Migration
     add_index :registers, [:subject_id, :created_at]
     add_index :registers, [:category_id, :created_at]
   end
-
 end

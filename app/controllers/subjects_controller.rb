@@ -9,7 +9,7 @@ class SubjectsController < ApplicationController
   def show
     @subject = Subject.find params[:id]
   end
-
+  
   def index
      @subjects = Subject.paginate page: params[:page], per_page: 5
   end

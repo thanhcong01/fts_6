@@ -32,7 +32,14 @@ module SessionsHelper
       redirect_to signin_url, notice: "Please sign in."
     end
   end
-  
+
+  def check_finish(register)
+    if register.finish? && register.start?
+      flash[:success] = "test finished"
+      redirect_to new_register_path
+    end
+  end
+
   def sign_out
     user.not_validate_password = true
     current_user.update_attributes(remember_token: User.digest(User.new_remember_token))

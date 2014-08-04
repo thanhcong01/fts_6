@@ -1,26 +1,5 @@
-<% provide(:title, 'All examinations') %>
-<h1>All examinations</h1>
-<span class="examinationSpan">Use the Ctrl to select mutiple</span>
-<div class="examinations">
-<%= form_for(@register) do |f| %>
-  <div class="examninationDiv1">
-    <ul>
-      <% @subjects.each do |subject| %>
-        <li>
-          <%= f.check_box(:subject_id, { :multiple => true }, subject.id, nil) %>
-          <%= h subject.context_display %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="examninationDiv2">
-    <%= f.collection_select :category_id, @categories, :id, :name_category, :prompt => false  %>
-  </div>
-  <div class="examninationDiv3">
-      <%= f.submit "Start new", class: "btn btn-large btn-primary" %>
-  </div>
-<% end %>
-</div>
+<% provide(:title, 'All register') %>
+<h1>All register</h1>
 <div class="registed">
   <ul>
     <% @registers.each do |register| %>
@@ -29,7 +8,7 @@
             <span><%= register.subject.context_display if  register.subject %></span>
             <span>Test</span>
             <span>00:00:00</span>
-            <span><%= link_to "Start", registers_update_path(register), method: :patch %></span>
+            <span><%= link_to "Start", edit_register_path(register) %></span>
         <% elsif !register.finish? %>
             <span>
               <h3><%= DateTime.parse(register.date_test.to_s).strftime("%d/%m/%Y %H:%M:%S") %></h3>
@@ -45,6 +24,13 @@
             <span><h4><%= register.count_correct %>/<%= register.subject.count_question if register.subject%></h4></span>
             <span><%= link_to "View", register_path(register) %></span>
         <% end%>
+        <span>
+          <%= link_to "check", edit_register_admin_path(register) %>
+        </span>
+        <span>
+          <%= link_to "delete", register, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+        </span>
       </li>
     <% end %>
   </ul>

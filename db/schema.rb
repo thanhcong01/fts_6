@@ -11,11 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728062748) do
+ActiveRecord::Schema.define(version: 20140811035622) do
+
+  create_table "answer_sheets", force: true do |t|
+    t.boolean  "correct"
+    t.boolean  "finish"
+    t.integer  "register_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answer_sheets", ["answer_id", "created_at"], name: "index_answer_sheets_on_answer_id_and_created_at", using: :btree
+  add_index "answer_sheets", ["question_id", "created_at"], name: "index_answer_sheets_on_question_id_and_created_at", using: :btree
+  add_index "answer_sheets", ["register_id", "created_at"], name: "index_answer_sheets_on_register_id_and_created_at", using: :btree
 
   create_table "answers", force: true do |t|
     t.text     "answer"
-    t.boolean  "isCorrect"
+    t.boolean  "correct"
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -29,21 +43,10 @@ ActiveRecord::Schema.define(version: 20140728062748) do
     t.datetime "updated_at"
   end
 
-  create_table "question_answers", force: true do |t|
-    t.text     "contextQuestion"
-    t.text     "contentAnswer"
-    t.boolean  "IsCorrect"
-    t.integer  "register_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "question_answers", ["register_id", "created_at"], name: "index_question_answers_on_register_id_and_created_at", using: :btree
-
   create_table "questions", force: true do |t|
-    t.text     "contextQuestion"
+    t.text     "context_question"
     t.integer  "subject_id"
-    t.boolean  "isControllText"
+    t.boolean  "is_controll_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61,9 +64,11 @@ ActiveRecord::Schema.define(version: 20140728062748) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   add_index "registers", ["category_id", "created_at"], name: "index_registers_on_category_id_and_created_at", using: :btree
+  add_index "registers", ["slug"], name: "index_registers_on_slug", using: :btree
   add_index "registers", ["subject_id", "created_at"], name: "index_registers_on_subject_id_and_created_at", using: :btree
   add_index "registers", ["user_id", "created_at"], name: "index_registers_on_user_id_and_created_at", using: :btree
 
